@@ -3,8 +3,21 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { InitPage } from '../pages/init/init';
+
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
+
+// DEV STUFF
+import {isDevMode} from "@angular/core";
+
+import * as devUtils from 'mobilecaddy-utils/devUtils';
+import * as _ from 'underscore';
+
+if (isDevMode()) {
+  window['devUtils'] = devUtils;
+  window['_'] = _;
+}
 
 @Component({
   templateUrl: 'app.html'
@@ -12,7 +25,7 @@ import { ListPage } from '../pages/list/list';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = InitPage;
 
   pages: Array<{title: string, component: any}>;
 
